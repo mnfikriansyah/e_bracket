@@ -3,6 +3,7 @@
 import 'package:e_bracket/auth/main_page.dart';
 import 'package:e_bracket/pages/home_page.dart';
 import 'package:e_bracket/pages/login_page.dart';
+import 'package:e_bracket/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';

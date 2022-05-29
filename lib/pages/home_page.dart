@@ -4,15 +4,40 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:e_bracket/auth/main_page.dart';
+import 'package:e_bracket/pages/home_page.dart';
+import 'package:e_bracket/pages/notification_page.dart';
+import 'package:e_bracket/pages/profile_page.dart';
+import 'package:e_bracket/components/navigationbar.dart';
+import 'package:e_bracket/pages/wrapper_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  // int _currentwidget = 1;
+
+  // List<Widget> _widgetOptions = <Widget>[
+  //   ProfilePage(),
+  //   NotificationPage(),
+  // ];
+
+  // // void onTap(int index) {
+  // //   setState(() {
+  // //     _currentwidget = index;
+  // //   });
+  // // }
+
+  // void _changeSelectedNavBar(int index) {
+  //   setState(() {
+  //     _currentwidget = index;
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.deepPurple[200],
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(100),
                   ),
                   child: Icon(
                     Icons.person,
@@ -153,25 +178,6 @@ class _HomePageState extends State<HomePage> {
             child: Text('Sign Out'),
           )
         ]),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notification',
-            backgroundColor: Color(0xFF79018C),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Color(0xFF79018C),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-            backgroundColor: Color(0xFF79018C),
-          ),
-        ],
       ),
     );
   }
