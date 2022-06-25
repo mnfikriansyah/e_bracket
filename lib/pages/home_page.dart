@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:e_bracket/pages/add_turnament_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -138,17 +139,22 @@ class _HomePageState extends State<HomePage> {
 
           SizedBox(height: 50),
           // Search
-          Container(
-            height: 80,
-            width: 250,
-            decoration: BoxDecoration(
-              color: Colors.deepPurple[300],
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                'Create Your Own Tournament',
-                style: TextStyle(color: Colors.white),
+          InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>AddTournamentPage()));
+            },
+            child: Container(
+              height: 80,
+              width: 250,
+              decoration: BoxDecoration(
+                color: Colors.deepPurple[300],
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
+                child: Text(
+                  'Create Your Own Tournament',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
           ),

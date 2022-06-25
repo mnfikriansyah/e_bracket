@@ -14,10 +14,82 @@ class NotificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('NotificationPage'),
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 20.0),
+              child: Text(
+                "Notifications",
+                style: TextStyle(
+                    color: Color(0XFF79018C),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Divider(
+              thickness: 2,
+              color: Colors.grey,
+            ),
+            NotificationCard(
+              time: "26 Jun 2022 14:00",
+              body: "Navy vs Evos match will start in 10 minutes. Players please enter the room tournament now.",
+            ),
+            NotificationCard(
+              time: "26 Jun 2022 12:00",
+              body: "Ciao (2) vs Sekut Esport (0). Ciao advance.",
+            ),
+            NotificationCard(
+              time: "26 Jun 2022 10:00",
+              body: "Navy vs Evos match will start in 10 minutes. Players please enter the room tournament now.",
+            ),
+
+          ],
+        ),
       ),
+    );
+  }
+}
+
+class NotificationCard extends StatelessWidget {
+  final String time;
+  final String body;
+  const NotificationCard({Key? key, required this.time,
+
+  required this.body}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              time,style:
+            TextStyle(fontSize: 14),),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Text(
+                body, style:
+              TextStyle(fontSize: 18),),
+          ),
+          SizedBox(height: 20,),
+          Divider(
+            thickness: 2,
+            color: Colors.grey,
+          ),
+        ],
+
     );
   }
 }
