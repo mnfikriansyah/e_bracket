@@ -36,7 +36,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       ));
     } else if (_lastName.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("First name can't be empty"),
+        content: Text("Last name can't be empty"),
         backgroundColor: Colors.red,
       ));
     } else {
@@ -46,7 +46,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           await user
               .reauthenticateWithCredential(EmailAuthProvider.credential(
                   email: _email.text, password: _lastPassword.text))
-              .then((_)async {
+              .then((_) async {
             await user.updateEmail(_email.text).then((_) async {
               await user.updatePassword(_newPassword.text).then((_) async {
                 //update firestore
@@ -70,7 +70,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 });
               }).catchError((e) {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text("Gagal update password"),
+                  content: Text("Failed to update password"),
                   backgroundColor: Colors.red,
                 ));
               });
@@ -79,20 +79,20 @@ class _EditProfilePageState extends State<EditProfilePage> {
               print(e);
 
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                content: Text("Gagal update email"),
+                content: Text("Failed to update email"),
                 backgroundColor: Colors.red,
               ));
             });
           }).catchError((e) {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text("Gagal update data :Periksa kembali password anda"),
+              content: Text("Failed to update data :Check back your password"),
               backgroundColor: Colors.red,
             ));
           });
         }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text("Gagal update data"),
+          content: Text("Failed to update data"),
           backgroundColor: Colors.red,
         ));
       }

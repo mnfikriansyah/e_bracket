@@ -82,64 +82,60 @@ class _ProfilePageState extends State<ProfilePage> {
                           if (snapshot.hasError) {
                             return Text('Something went wrong');
                           }
-                          if (snapshot.connectionState == ConnectionState.waiting) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
                             return Center(
                               child: CircularProgressIndicator(),
                             );
                           }
 
-                          if(!snapshot.hasData){
+                          if (!snapshot.hasData) {
                             return Text('Something went wrong');
-
                           }
 
-                          if(snapshot.data!.docs.isEmpty){
+                          if (snapshot.data!.docs.isEmpty) {
                             return Text('Something went wrong');
-
                           }
 
-                            print('donee');
-                            print(snapshot.data);
+                          print('donee');
+                          print(snapshot.data);
 
-                                print(snapshot.data!.docs.first.data());
-                                print(FirebaseAuth.instance.currentUser!.email);
+                          print(snapshot.data!.docs.first.data());
+                          print(FirebaseAuth.instance.currentUser!.email);
 
-                                UserModel userModel = UserModel.fromJson(
-                                    snapshot.data!.docs.first.data());
-                                userModel.id = snapshot.data!.docs.first.id;
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                        userModel.firstName.toString() +
-                                            " " +
-                                            userModel.lastName.toString(),
-                                        style: TextStyle(
-                                            fontSize: 17,
-                                            color: Color(0XFF79018C),
-                                            fontWeight: FontWeight.bold)),
-                                    InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    EditProfilePage(
-                                                      userModel: userModel,
-                                                    )));
-                                      },
-                                      child: Text(
-                                        'Edit Profile',
-                                        style: TextStyle(
-                                          fontSize: 17,
-                                          decoration: TextDecoration.underline,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                );
-
-
+                          UserModel userModel = UserModel.fromJson(
+                              snapshot.data!.docs.first.data());
+                          userModel.id = snapshot.data!.docs.first.id;
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  userModel.firstName.toString() +
+                                      " " +
+                                      userModel.lastName.toString(),
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      color: Color(0XFF79018C),
+                                      fontWeight: FontWeight.bold)),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => EditProfilePage(
+                                                userModel: userModel,
+                                              )));
+                                },
+                                child: Text(
+                                  'Edit Profile',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
                         }),
                   ],
                 )
