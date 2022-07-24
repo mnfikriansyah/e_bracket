@@ -225,7 +225,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Center(
                         child: Text(
                       'Sign Up',
-                      style: TextStyle(color: Colors.white),
+                      style: GoogleFonts.roboto(color: Colors.white),
                     )),
                   ),
                 ),
