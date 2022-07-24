@@ -2,6 +2,8 @@ import 'package:e_bracket/pages/home/home_page.dart';
 import 'package:e_bracket/pages/screens.dart';
 import 'package:flutter/material.dart';
 
+import '../model/models.dart';
+
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
     print('This is route: ${settings.name}');
@@ -14,9 +16,9 @@ class AppRouter {
       case CartPage.routeName:
         return CartPage.route();
       case ProductPage.routeName:
-        return ProductPage.route();
+        return ProductPage.route(product: settings.arguments as Product);
       case CatalogPage.routeName:
-        return CatalogPage.route();
+        return CatalogPage.route(category: settings.arguments as Category);
       case WishlistPage.routeName:
         return WishlistPage.route();
 

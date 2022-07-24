@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ThemeData theme() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
-    fontFamily: 'Roboto',
+    fontFamily: 'Avenir',
     textTheme: textTheme(),
   );
 }
@@ -13,50 +14,42 @@ TextTheme textTheme() {
     headline1: TextStyle(
       color: Colors.black,
       fontSize: 32,
-      fontFamily: 'Roboto',
       fontWeight: FontWeight.bold,
     ),
     headline2: TextStyle(
       color: Colors.black,
       fontSize: 24,
-      fontFamily: 'Roboto',
       fontWeight: FontWeight.bold,
     ),
     headline3: TextStyle(
       color: Colors.black,
       fontSize: 16,
-      fontFamily: 'Roboto',
       fontWeight: FontWeight.bold,
     ),
     headline4: TextStyle(
       color: Colors.black,
       fontSize: 14,
-      fontFamily: 'Roboto',
       fontWeight: FontWeight.bold,
     ),
     headline5: TextStyle(
       color: Colors.black,
       fontSize: 14,
-      fontFamily: 'Roboto',
       fontWeight: FontWeight.bold,
     ),
     headline6: TextStyle(
       color: Colors.black,
       fontSize: 14,
-      fontFamily: 'Roboto',
       fontWeight: FontWeight.normal,
     ),
     bodyText1: TextStyle(
       color: Colors.black,
       fontSize: 12,
-      fontFamily: 'Roboto',
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.normal,
     ),
     bodyText2: TextStyle(
       color: Colors.black,
       fontSize: 10,
-      fontFamily: 'Roboto',
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.normal,
     ),
   );
 }
