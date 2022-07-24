@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: Text(
                         'Forgot Password?',
-                        style: TextStyle(
+                        style: GoogleFonts.roboto(
                           color: Color(0xFF79018C),
                           fontWeight: FontWeight.bold,
                         ),
@@ -151,13 +151,14 @@ class _LoginPageState extends State<LoginPage> {
                     child: Center(
                         child: Text(
                       'Sign In',
-                      style: TextStyle(color: Colors.white),
+                      style: GoogleFonts.roboto(color: Colors.white),
                     )),
                   ),
                 ),
               ),
               SizedBox(height: 10),
 
+              // dont have an account?
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -168,6 +169,8 @@ class _LoginPageState extends State<LoginPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+
+                  // Register button
                   GestureDetector(
                     onTap: widget.showRegisterPage,
                     child: Text(
@@ -180,9 +183,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-
-              // dont have an account?
-              // Register button
             ]),
           ),
         ),

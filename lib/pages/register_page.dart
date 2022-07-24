@@ -48,8 +48,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future adduserDetails(String firstName, String lastName, String email) async {
     await FirebaseFirestore.instance.collection('users').add({
-      'first name': firstName,
-      'last name': lastName,
+      'firstName': firstName,
+      'lastName': lastName,
       'email': email,
     });
   }
@@ -225,7 +225,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Center(
                         child: Text(
                       'Sign Up',
-                      style: TextStyle(color: Colors.white),
+                      style: GoogleFonts.roboto(color: Colors.white),
                     )),
                   ),
                 ),
