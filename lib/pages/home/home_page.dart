@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Zero To Unicorn'),
+      appBar: CustomAppBar(title: 'BelanjaBelanja'),
       bottomNavigationBar: CustomNavBar(),
       body: Column(
         children: [
