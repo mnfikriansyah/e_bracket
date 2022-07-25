@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../blocs/cart/cart_bloc.dart';
 import '../../model/models.dart';
 
 class ProductPage extends StatelessWidget {
@@ -60,13 +61,20 @@ class ProductPage extends StatelessWidget {
                   );
                 },
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.white),
-                onPressed: () {},
-                child: Text(
-                  'ADD TO CART',
-                  style: Theme.of(context).textTheme.headline3!,
-                ),
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Colors.white),
+                    onPressed: () {
+                      context.read<CartBloc>().add(CartProductAdded(product));
+                      Navigator.pushNamed(context, '/cart');
+                    },
+                    child: Text(
+                      'ADD TO CART',
+                      style: Theme.of(context).textTheme.headline3!,
+                    ),
+                  );
+                },
               )
             ],
           ),

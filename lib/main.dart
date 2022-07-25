@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 // import 'package:e_bracket/auth/main_page.dart';
-import 'package:e_bracket/blocs/bloc/wishlist_bloc.dart';
+import 'package:e_bracket/blocs/cart/cart_bloc.dart';
+import 'package:e_bracket/blocs/wishlist/wishlist_bloc.dart';
 import 'package:e_bracket/config/app_router.dart';
 import 'package:e_bracket/config/theme.dart';
 import 'package:e_bracket/pages/screens.dart';
@@ -29,10 +30,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => WishlistBloc()..add(StartWishlist())),
+        BlocProvider(create: (_) => CartBloc()..add(CartStarted())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'BelanjaBelanja',
+        title: 'Zero To Unicorn',
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
         initialRoute: HomePage.routeName,

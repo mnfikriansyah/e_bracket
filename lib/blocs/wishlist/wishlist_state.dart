@@ -1,4 +1,3 @@
-@@ -0,0 +1,21 @@
 part of 'wishlist_bloc.dart';
 
 abstract class WishlistState extends Equatable {
