@@ -11,9 +11,11 @@ import '../blocs/cart/cart_bloc.dart';
 
 class CartProductCard extends StatelessWidget {
   final Product product;
+  final int quantity;
   const CartProductCard({
     Key? key,
     required this.product,
+    required this.quantity,
   }) : super(key: key);
 
   @override
@@ -51,26 +53,35 @@ class CartProductCard extends StatelessWidget {
           ),
           BlocBuilder<CartBloc, CartState>(
             builder: (context, state) {
-              return Row(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.remove_circle),
-                    onPressed: () {
-                      context.read<CartBloc>().add(CartProductRemoved(product));
-                    },
-                  ),
-                  Text(
-                    '1',
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.add_circle),
-                    onPressed: () {
-                      context.read<CartBloc>().add(CartProductAdded(product));
-                    },
-                  ),
-                ],
-              );
+              if (state is CartLoading) {
+                return CircularProgressIndicator();
+              }
+              if (state is CartLoaded) {
+                return Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.remove_circle),
+                      onPressed: () {
+                        context
+                            .read<CartBloc>()
+                            .add(CartProductRemoved(product));
+                      },
+                    ),
+                    Text(
+                      '$quantity',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.add_circle),
+                      onPressed: () {
+                        context.read<CartBloc>().add(CartProductAdded(product));
+                      },
+                    ),
+                  ],
+                );
+              } else {
+                return Text('Something went wrong');
+              }
             },
           ),
         ],
