@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.e_bracket">
+    package="com.android.application">
    <application
         android:label="e_bracket"
         android:name="${applicationName}"

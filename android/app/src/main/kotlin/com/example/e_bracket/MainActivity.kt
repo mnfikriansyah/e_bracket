@@ -1,4 +1,4 @@
-package com.example.e_bracket
+package com.android.application
 
 import io.flutter.embedding.android.FlutterActivity
 
