@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:e_bracket/auth/main_page.dart';
 import 'package:e_bracket/pages/home/home_page.dart';
-import 'package:e_bracket/pages/notification_page.dart';
 import 'package:e_bracket/pages/profile_page.dart';
 
 class WrapperPage extends StatefulWidget {
@@ -18,7 +17,6 @@ class _WrapperPageState extends State<WrapperPage> {
   int _currentwidget = 1;
 
   List<Widget> _widgetOptions = <Widget>[
-    NotificationPage(),
     HomePage(),
     ProfilePage(),
   ];

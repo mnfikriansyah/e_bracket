@@ -6,7 +6,11 @@ import 'package:e_bracket/widgets/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../blocs/bloc/product_bloc.dart';
+import '../../blocs/category/category_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,29 +28,66 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: CustomNavBar(),
       body: Column(
         children: [
-          Container(
-            child: CarouselSlider(
-              options: CarouselOptions(
-                aspectRatio: 1.5,
-                viewportFraction: 0.9,
-                enlargeCenterPage: true,
-                enlargeStrategy: CenterPageEnlargeStrategy.height,
-              ),
-              items: Category.categories
-                  .map((category) => HeroCarouselCard(category: category))
-                  .toList(),
-            ),
+          BlocBuilder<CategoryBloc, CategoryState>(
+            builder: (context, state) {
+              if (state is CategoryLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (state is CategoryLoaded) {
+                return CarouselSlider(
+                  options: CarouselOptions(
+                    aspectRatio: 1.5,
+                    viewportFraction: 0.9,
+                    enlargeCenterPage: true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.height,
+                  ),
+                  items: state.categories
+                      .map((category) => HeroCarouselCard(category: category))
+                      .toList(),
+                );
+              } else {
+                return Text('Something went wrong.');
+              }
+            },
           ),
           SectionTitle(title: 'RECOMMENDED'),
-          ProductCarousel(
-              products: Product.products
-                  .where((product) => product.isRecommended)
-                  .toList()),
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (state is ProductLoaded) {
+                return ProductCarousel(
+                    products: state.products
+                        .where((product) => product.isRecommended)
+                        .toList());
+              } else {
+                return Text('Something went wrong.');
+              }
+            },
+          ),
           SectionTitle(title: 'MOST POPULAR'),
-          ProductCarousel(
-              products: Product.products
-                  .where((product) => product.isPopular)
-                  .toList()),
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (state is ProductLoaded) {
+                return ProductCarousel(
+                    products: state.products
+                        .where((product) => product.isPopular)
+                        .toList());
+              } else {
+                return Text('Something went wrong.');
+              }
+            },
+          ),
         ],
       ),
     );

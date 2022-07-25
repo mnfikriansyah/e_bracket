@@ -1,10 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
   final String name;
   final String category;
   final String imageUrl;
-  final double price;
+  final num price;
   final bool isRecommended;
   final bool isPopular;
 
@@ -26,13 +27,26 @@ class Product extends Equatable {
         isRecommended,
         isPopular,
       ];
+
+  static Product fromSnapshot(DocumentSnapshot snap) {
+    Product product = Product(
+      name: snap['name'],
+      category: snap['category'],
+      imageUrl: snap['imageUrl'],
+      price: snap['price'],
+      isRecommended: snap['isRecommended'],
+      isPopular: snap['isPopular'],
+    );
+    return product;
+  }
+
   static List<Product> products = [
     Product(
       name: 'Soft Drink #1',
       category: 'Soft Drink',
       imageUrl:
           'https://images.unsplash.com/photo-1632161927166-0aea13d8f7e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=698&q=80',
-      price: 2.00,
+      price: 2,
       isRecommended: false,
       isPopular: true,
     ),
@@ -41,7 +55,7 @@ class Product extends Equatable {
       category: 'Smoothies',
       imageUrl:
           'https://images.unsplash.com/photo-1502741224143-90386d7f8c82?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2669&q=80',
-      price: 5.00,
+      price: 5,
       isRecommended: true,
       isPopular: false,
     ),
@@ -50,7 +64,7 @@ class Product extends Equatable {
       category: 'Coffee',
       imageUrl:
           'https://images.unsplash.com/photo-1593652023641-56dbabbb5e37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-      price: 1.80,
+      price: 1,
       isRecommended: true,
       isPopular: true,
     ),
@@ -59,7 +73,7 @@ class Product extends Equatable {
       category: 'Smoothies',
       imageUrl:
           'https://images.unsplash.com/photo-1654084789555-a12dd9ec060b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-      price: 4.00,
+      price: 4,
       isRecommended: true,
       isPopular: false,
     ),
@@ -68,7 +82,7 @@ class Product extends Equatable {
       category: 'Soft Drink',
       imageUrl:
           'https://images.unsplash.com/photo-1581006852262-e4307cf6283a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-      price: 3.00,
+      price: 3,
       isRecommended: false,
       isPopular: false,
     ),
