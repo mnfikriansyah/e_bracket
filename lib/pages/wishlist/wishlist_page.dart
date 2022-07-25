@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
-import 'package:e_bracket/blocs/bloc/wishlist_bloc.dart';
+import 'package:e_bracket/blocs/wishlist/wishlist_bloc.dart';
 import 'package:e_bracket/model/product_model.dart';
 import 'package:e_bracket/widgets/custom_appbar.dart';
 import 'package:e_bracket/widgets/custom_navbar.dart';

@@ -1,0 +1,69 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+import 'package:e_bracket/model/models.dart';
+import 'package:e_bracket/widgets/custom_appbar.dart';
+import 'package:e_bracket/widgets/custom_navbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+
+class CartProductCard extends StatelessWidget {
+  final Product product;
+  const CartProductCard({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Row(
+        children: [
+          Image.network(
+            product.imageUrl,
+            height: 100,
+            width: 80,
+            fit: BoxFit.cover,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product.name,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                Text(
+                  'RM${product.price}',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Row(
+            children: [
+              IconButton(
+                icon: Icon(Icons.remove_circle),
+                onPressed: () {},
+              ),
+              Text(
+                '1',
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              IconButton(
+                icon: Icon(Icons.add_circle),
+                onPressed: () {},
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
